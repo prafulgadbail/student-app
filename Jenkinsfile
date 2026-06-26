@@ -6,14 +6,11 @@ pipeline {
 
     stages {
 
-        stage('Test') {
+        stage('Agent Test') {
             steps {
                 sh 'hostname'
             }
         }
-    }
-
-    stages {
 
         stage('Checkout') {
             steps {
@@ -50,5 +47,6 @@ pipeline {
         failure {
             echo "Pipeline Failed"
         }
+
     }
 }
