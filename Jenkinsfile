@@ -13,7 +13,7 @@ pipeline {
 
         }
 
-        stage('Docker Build') {
+        stage('Backend Docker Build') {
             steps {
                 dir('backend') {
                     sh 'docker build -t student-backend:${BUILD_NUMBER} .'
@@ -30,7 +30,7 @@ pipeline {
             }
         }
 
-        stage('Docker Build') {
+        stage('Frontend Docker Build') {
             steps {
                 dir('frontend') {
                     sh 'docker build -t student-frontend:${BUILD_NUMBER} .'
