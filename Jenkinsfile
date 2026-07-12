@@ -30,6 +30,14 @@ pipeline {
             }
         }
 
+        stage('Docker Build') {
+            steps {
+                dir('frontend') {
+                    sh 'docker build -t student-frontend:${BUILD_NUMBER} .'
+                }
+            }
+        }
+
 
     }
 
