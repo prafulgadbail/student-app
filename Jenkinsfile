@@ -4,7 +4,7 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Backend Build') {
             steps {
                 dir('backend') {
                     sh 'mvn clean package -DskipTests'
@@ -17,6 +17,15 @@ pipeline {
             steps {
                 dir('backend') {
                     sh 'docker build -t student-backend:${BUILD_NUMBER} .'
+                }
+            }
+        }
+
+        stage('Frontend Build') {
+            steps {
+                dir('frontend') {
+                    sh 'npm ci'
+                    sh 'npm run build'
                 }
             }
         }
