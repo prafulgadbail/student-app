@@ -16,7 +16,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 dir('backend') {
-                    sh 'docker build -t student-backend:$(BUILD_NUMBER) .'
+                    sh 'docker build -t student-backend:${BUILD_NUMBER} .'
                 }
             }
         }
