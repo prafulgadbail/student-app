@@ -1,13 +1,12 @@
-environment {
-    ECR_REGISTRY = '261945560801.dkr.ecr.ap-south-1.amazonaws.com'
-    BACKEND_REPO   = 'student-backend'
-    FRONTEND_REPO  = 'student-frontend'
-}
-
-
 pipeline {
     agent {
         label 'build-agent'
+    }
+
+    environment {
+    ECR_REGISTRY = '261945560801.dkr.ecr.ap-south-1.amazonaws.com'
+    BACKEND_REPO   = 'student-backend'
+    FRONTEND_REPO  = 'student-frontend'
     }
 
     stages {
@@ -78,8 +77,8 @@ pipeline {
         stage('Frontend Tag') {
             steps {
         sh '''
-        docker tag {FRONTEND_REPO}:${BUILD_NUMBER} \
-        ${ECR_REGISTRY}/{FRONTEND_REPO}:${BUILD_NUMBER}
+        docker tag ${FRONTEND_REPO}:${BUILD_NUMBER} \
+        ${ECR_REGISTRY}/${FRONTEND_REPO}:${BUILD_NUMBER}
         '''
             }
         }
