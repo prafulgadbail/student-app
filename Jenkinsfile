@@ -12,6 +12,14 @@ pipeline {
 
         }
 
+        stage('Environment Validation') {
+            steps {
+                sh 'git --version'
+                sh 'java -version'
+                sh 'mvn -version'
+            }
+        }
+
     }
 
 }
