@@ -12,15 +12,7 @@ pipeline {
         
     }
 
-    stages {
-        stage('Build') {
-            steps {
-                dir('backend') {
-                    sh 'mvn clean package -DskipTests'
-                }
-                
-            }
-        }
+    
         
         stage('Backend Docker Build') {
             steps {
@@ -52,6 +44,6 @@ pipeline {
             }
         }
 
-        
+
     }
 }
